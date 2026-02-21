@@ -1,0 +1,65 @@
+name: Deploy PBIP to Fabric
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  deploy:
+    name: Deploy to Fabric Workspace
+    runs-on: windows-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Az.Accounts
+        shell: pwsh
+        run: |
+          Install-Module -Name Az.Accounts -Scope CurrentUser -Force -AllowClobber
+
+      - name: Download FabricPS-PBIP
+        shell: pwsh
+        run: |
+          $modulesPath = "$env:GITHUB_WORKSPACE\.modules"
+          New-Item -ItemType Directory -Path $modulesPath -Force | Out-Null
+
+          @(
+            "https://raw.githubusercontent.com/microsoft/Analysis-Services/master/pbidevmode/fabricps-pbip/FabricPS-PBIP.psm1",
+            "https://raw.githubusercontent.com/microsoft/Analysis-Services/master/pbidevmode/fabricps-pbip/FabricPS-PBIP.psd1"
+          ) | ForEach-Object {
+              Invoke-WebRequest -Uri $_ -OutFile "$modulesPath\$(Split-Path $_ -Leaf)"
+          }
+
+      - name: Deploy PBIP to Fabric
+        shell: pwsh
+        run: |
+
+          $APP_ID = "9f8e5873-a0d4-4843-a16e-60ec0579b7fb"
+          $APP_SECRET = "Wfo8Q~-8b3Og0i30aFOuEMzp8kDzjAXMmTL4ha5m"
+          $TENANT_ID = "9115fcaf-a94d-40b1-a3ba-b062c80555e0"
+          $WORKSPACE_ID = "aadd7ed8-bf11-4de7-864c-403f1d864893"
+
+          $path = "$env:GITHUB_WORKSPACE"
+          $modulesPath = "$path\.modules"
+
+          Import-Module "$modulesPath\FabricPS-PBIP.psm1" -Force
+
+          $securePassword = ConvertTo-SecureString $APP_SECRET -AsPlainText -Force
+          $credential = New-Object System.Management.Automation.PSCredential ($APP_ID, $securePassword)
+
+          Connect-AzAccount -ServicePrincipal `
+                            -Credential $credential `
+                            -TenantId $TENANT_ID
+
+          $semanticModelImport = Import-FabricItem `
+              -workspaceId $WORKSPACE_ID `
+              -path "$path\Formacion.SemanticModel"
+
+          Import-FabricItem `
+              -workspaceId $WORKSPACE_ID `
+              -path "$path\Formacion.Report" `
+              -itemProperties @{ semanticModelId = $semanticModelImport.Id }
+
+          Write-Host "Deploy completed successfully."
