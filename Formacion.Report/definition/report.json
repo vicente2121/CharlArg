@@ -1,0 +1,172 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.1.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY22SU11",
+      "reportVersionAtImport": {
+        "visual": "1.8.76",
+        "report": "2.0.76",
+        "page": "1.3.76"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "Custom7925880788608424.json",
+      "reportVersionAtImport": {
+        "visual": "1.8.81",
+        "report": "2.0.81",
+        "page": "1.3.81"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "publicCustomVisuals": [
+    "deneb7E15AEF80B9E4D4F8E12924291ECE89A"
+  ],
+  "resourcePackages": [
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Custom7925880788608424.json",
+          "path": "Custom7925880788608424.json",
+          "type": "Image"
+        },
+        {
+          "name": "filtro_activo09558924183278417.png",
+          "path": "filtro_activo09558924183278417.png",
+          "type": "Image"
+        },
+        {
+          "name": "filtro_activo16778927523252785.png",
+          "path": "filtro_activo16778927523252785.png",
+          "type": "Image"
+        },
+        {
+          "name": "filtro_inactivo3296267624090019.png",
+          "path": "filtro_inactivo3296267624090019.png",
+          "type": "Image"
+        },
+        {
+          "name": "Fondo_general9849534186848674.png",
+          "path": "Fondo_general9849534186848674.png",
+          "type": "Image"
+        },
+        {
+          "name": "Fondo_portada5464001494126844.png",
+          "path": "Fondo_portada5464001494126844.png",
+          "type": "Image"
+        },
+        {
+          "name": "Fonod_tolltip35879123354538334.png",
+          "path": "Fonod_tolltip35879123354538334.png",
+          "type": "Image"
+        },
+        {
+          "name": "Inff_activada5314095738379689.png",
+          "path": "Inff_activada5314095738379689.png",
+          "type": "Image"
+        },
+        {
+          "name": "Inff_activada694637905710767.png",
+          "path": "Inff_activada694637905710767.png",
+          "type": "Image"
+        },
+        {
+          "name": "inof_desactivada6393939908886892.png",
+          "path": "inof_desactivada6393939908886892.png",
+          "type": "Image"
+        },
+        {
+          "name": "Logo(2)5415577079135641.png",
+          "path": "Logo(2)5415577079135641.png",
+          "type": "Image"
+        },
+        {
+          "name": "menu_activo49183499556028143.png",
+          "path": "menu_activo49183499556028143.png",
+          "type": "Image"
+        },
+        {
+          "name": "menu_activo6233318707576414.png",
+          "path": "menu_activo6233318707576414.png",
+          "type": "Image"
+        },
+        {
+          "name": "menu_inactivo9853174247128396.png",
+          "path": "menu_inactivo9853174247128396.png",
+          "type": "Image"
+        },
+        {
+          "name": "portada_make4399420542677839.png",
+          "path": "portada_make4399420542677839.png",
+          "type": "Image"
+        },
+        {
+          "name": "sticker8189857203144595.png",
+          "path": "sticker8189857203144595.png",
+          "type": "Image"
+        }
+      ]
+    },
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY22SU11",
+          "path": "BaseThemes/CY22SU11.json",
+          "type": "BaseTheme"
+        },
+        {
+          "name": "usa.states.topo",
+          "path": "Shapemaps/usa.states.topo.json",
+          "type": "ShapeMap"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "defaultFilterActionIsDataFilter": true,
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": false,
+    "useDefaultAggregateDisplayName": true
+  },
+  "slowDataSourceSettings": {
+    "isCrossHighlightingDisabled": false,
+    "isSlicerSelectionsButtonEnabled": false,
+    "isFilterSelectionsButtonEnabled": false,
+    "isFieldWellButtonEnabled": false,
+    "isApplyAllButtonEnabled": false
+  }
+}

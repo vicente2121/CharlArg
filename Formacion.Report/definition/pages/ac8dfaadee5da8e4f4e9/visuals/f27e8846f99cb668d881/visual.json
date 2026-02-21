@@ -1,0 +1,117 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "f27e8846f99cb668d881",
+  "position": {
+    "x": 137.75510204081633,
+    "y": 95.510204081632665,
+    "z": 0,
+    "height": 329.69387755102042,
+    "width": 583.16326530612253,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Geo"
+                    }
+                  },
+                  "Property": "Region"
+                }
+              },
+              "queryRef": "Dim_Geo.Region",
+              "nativeQueryRef": "Region"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tabla_medidas"
+                    }
+                  },
+                  "Property": "Total ventas"
+                }
+              },
+              "queryRef": "Tabla_medidas.Total ventas",
+              "nativeQueryRef": "Total ventas"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tabla_medidas"
+                    }
+                  },
+                  "Property": "Total Costos operativos"
+                }
+              },
+              "queryRef": "Tabla_medidas.Total Costos operativos",
+              "nativeQueryRef": "Total Costos operativos"
+            },
+            {
+              "field": {
+                "NativeVisualCalculation": {
+                  "Language": "dax",
+                  "Expression": "[Total ventas]-[Total Costos operativos]",
+                  "Name": "Marge"
+                }
+              },
+              "queryRef": "select",
+              "nativeQueryRef": "Marge"
+            },
+            {
+              "field": {
+                "NativeVisualCalculation": {
+                  "Language": "dax",
+                  "Expression": "\r\nFORMAT(DIVIDE([Total Costos operativos],[Total ventas],0),\r\n \"0,0%\")",
+                  "Name": "% Costos"
+                }
+              },
+              "queryRef": "select1",
+              "nativeQueryRef": "% Costos"
+            },
+            {
+              "field": {
+                "NativeVisualCalculation": {
+                  "Language": "dax",
+                  "Expression": "FORMAT( DIVIDE([Total ventas],COLLAPSE(SUM([Total ventas]),Rows),0),\"0,0%\")",
+                  "Name": "% Ventas"
+                }
+              },
+              "queryRef": "select2",
+              "nativeQueryRef": "% Ventas"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Tabla_medidas"
+                  }
+                },
+                "Property": "Total ventas"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
